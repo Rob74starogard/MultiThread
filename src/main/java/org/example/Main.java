@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
@@ -9,19 +10,19 @@ public class Main {
         while (flag) {
             calculator.menuPrint();
             String choice = scanner.nextLine();
-            switch (choice){
-                case "1" :{
+            switch (choice) {
+                case "1": {
                     calculator.factrorialCalc();
                     break;
-            }
-                case "2" :{
-                    System.out.println(choice);
+                }
+                case "2": {
                     calculator.powerCalc();
                     break;
                 }
-                default:{
-                    System.out.println("Incorect value, exit");
-                   flag = false;
+                default: {
+                    System.out.println("Incorrect value, exit");
+                    flag = false;
+                    scanner.close();
                     break;
                 }
 

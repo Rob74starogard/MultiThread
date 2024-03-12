@@ -14,11 +14,11 @@ public class FactorialCalculator extends Thread {
 
     @Override
     public void run() {
+        Calculator calculator = new Calculator();
         System.out.println("Obliczanie " + number + "! w tle...");
         BigInteger factorial = calculateFactorial(number);
-        String resultFormatted = formatResult(factorial);
+        String resultFormatted = calculator.formatResult(factorial);
         System.out.println(number + "! (10 pierwszych cyfr) = " + resultFormatted);
-        Calculator calculator = new Calculator();
         calculator.saveResultToFile(number + "! (10 pierwszych cyfr) = " + resultFormatted);
     }
 
