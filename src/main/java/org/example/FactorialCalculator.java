@@ -1,8 +1,5 @@
 package org.example;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.math.BigInteger;
 
 public class FactorialCalculator extends Thread {
@@ -42,15 +39,6 @@ public class FactorialCalculator extends Thread {
             return resultStr.substring(0, 10);
         } else {
             return resultStr;
-        }
-    }
-
-    private static synchronized void saveResultToFile(String result) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(RESULT_FILE, true))) {
-            writer.write(result);
-            writer.newLine();
-        } catch (IOException e) {
-            System.err.println("Błąd podczas zapisywania wyniku do pliku: " + e.getMessage());
         }
     }
 }
