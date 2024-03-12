@@ -13,14 +13,18 @@ public class FactorialCalculator extends Thread {
         this.number = number;
     }
 
+
+
     @Override
     public void run() {
         System.out.println("Obliczanie " + number + "! w tle...");
         BigInteger factorial = calculateFactorial(number);
         String resultFormatted = formatResult(factorial);
         System.out.println(number + "! (10 pierwszych cyfr) = " + resultFormatted);
-        saveResultToFile(number + "! (10 pierwszych cyfr) = " + resultFormatted);
+        Calculator calculator = new Calculator();
+        calculator.saveResultToFile(number + "! (10 pierwszych cyfr) = " + resultFormatted);
     }
+
 
     private BigInteger calculateFactorial(int n) {
         BigInteger result = BigInteger.ONE;
@@ -29,6 +33,8 @@ public class FactorialCalculator extends Thread {
         }
         return result;
     }
+
+
 
     private String formatResult(BigInteger result) {
         String resultStr = result.toString();

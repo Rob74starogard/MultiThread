@@ -3,19 +3,20 @@ package org.example;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        ServiceCalc serviceCalc = new ServiceCalc();
+        Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         while (flag) {
-            serviceCalc.menuPrint();
+            calculator.menuPrint();
             String choice = scanner.nextLine();
             switch (choice){
                 case "1" :{
-                    serviceCalc.factrorialCalc();
+                    calculator.factrorialCalc();
                     break;
             }
                 case "2" :{
                     System.out.println(choice);
+                    calculator.powerCalc();
                     break;
                 }
                 default:{
