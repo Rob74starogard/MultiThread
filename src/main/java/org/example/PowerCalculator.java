@@ -20,6 +20,6 @@ public class PowerCalculator extends Thread {
         System.out.println("Obliczanie " + base + " potęgi" + expotetntial + " w tle...");
         float result = (float) calculatePower(base, expotetntial);
         String resultFormatted = calculator.formatResult(result);
-        calculator.saveResultToFile(base + " do potegi "+ expotetntial +" wynosi "+ resultFormatted);
+        calculator.saveResultToFile(base + " do potegi "+ expotetntial +" wynosi "+ resultFormatted + " Wątek Id:"+ threadId());
     }
 }

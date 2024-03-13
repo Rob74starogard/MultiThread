@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Calculator {
     public static final String RESULT_FILE = "factorial_results.txt";
     Scanner reader = new Scanner(System.in);
+
     public void menuPrint() {
         System.out.println("What we calculate?");
         System.out.println("1. Power of given number");
@@ -17,16 +18,22 @@ public class Calculator {
 
     public void factrorialCalc() {
         System.out.println("enter a value to calculate Factional");
-        String number =  reader.nextLine();
-        new FactorialCalculator(Integer.parseInt(number)).start();
+        String number = reader.nextLine();
+        Thread factCalc = new Thread(new FactorialCalculator(Integer.parseInt(number)));
+        factCalc.start();
+        System.out.println(factCalc.getName());
     }
+
     public void powerCalc() {
-        System.out.println("enter a value to calculate basic");
-        String number =  reader.nextLine();
-        System.out.println("enter a expotencial");
-        String expotencial =  reader.nextLine();
-        new PowerCalculator(Float.parseFloat(number),Float.parseFloat(expotencial)).start();
+        System.out.println("Enter a value to calculate basic");
+        String number = reader.nextLine();
+        System.out.println("Enter a expotencial");
+        String expotencial = reader.nextLine();
+        Thread powCalc = new Thread(new PowerCalculator(Float.parseFloat(number), Float.parseFloat(expotencial)));
+        powCalc.start();
+        System.out.println(powCalc.getName());
     }
+
     public static synchronized void saveResultToFile(String result) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(RESULT_FILE, true))) {
             writer.write(result);
@@ -35,6 +42,7 @@ public class Calculator {
             System.err.println("Błąd podczas zapisywania wyniku do pliku: " + e.getMessage());
         }
     }
+
     public String formatResult(BigInteger result) {
         String resultStr = result.toString();
         if (resultStr.length() > 10) {
@@ -43,6 +51,7 @@ public class Calculator {
             return resultStr;
         }
     }
+
     public String formatResult(float result) {
         String resultStr = Float.toString(result);
         if (resultStr.length() > 10) {

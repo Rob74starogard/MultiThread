@@ -4,12 +4,10 @@ import java.math.BigInteger;
 
 public class FactorialCalculator extends Thread {
     private int number;
-    private static final String RESULT_FILE = "factorial_results.txt";
 
     public FactorialCalculator(int number) {
         this.number = number;
     }
-
 
 
     @Override
@@ -19,7 +17,7 @@ public class FactorialCalculator extends Thread {
         BigInteger factorial = calculateFactorial(number);
         String resultFormatted = calculator.formatResult(factorial);
         System.out.println(number + "! (10 pierwszych cyfr) = " + resultFormatted);
-        calculator.saveResultToFile(number + "! (10 pierwszych cyfr) = " + resultFormatted);
+        calculator.saveResultToFile(number + "! (10 pierwszych cyfr) = " + resultFormatted + " Wątek Id:" + threadId());
     }
 
 
@@ -29,16 +27,5 @@ public class FactorialCalculator extends Thread {
             result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
-    }
-
-
-
-    private String formatResult(BigInteger result) {
-        String resultStr = result.toString();
-        if (resultStr.length() > 10) {
-            return resultStr.substring(0, 10);
-        } else {
-            return resultStr;
-        }
     }
 }
